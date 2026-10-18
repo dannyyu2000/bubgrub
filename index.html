@@ -81,7 +81,7 @@ $("go").onclick=()=>{$("sum").innerHTML="";lines().forEach(l=>$("sum").append(el
 $("close").onclick=()=>$("dlg").close();
 $("send").onclick=()=>{const n=$("note").value.trim();
  const body="Order up! 🍽️\n"+lines().join("\n")+(n?"\nNote: "+n:"");
- $("ob").value=body;
+ $("ob").value=body;try{fetch("https://ntfy.sh/bubgrub-a1dc1aa5078c71ea81d8?title=New%20BubGrub%20order",{method:"POST",body}).catch(()=>{})}catch(e){}
  const o=$("ob");$("fb").hidden=false;let ok=false;
  try{o.focus();o.select();o.setSelectionRange(0,9999);ok=document.execCommand("copy")}catch(e){}
  const fin=g=>{$("fbt").textContent=g?"Copied ✓ Now paste it in Messenger to send to Danny":"Tap Copy, then paste it in Messenger to send to Danny";$("cp").hidden=g};
